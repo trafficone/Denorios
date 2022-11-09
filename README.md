@@ -19,71 +19,70 @@ Each action in a serverless environment is handled by a single function.
 ### Endpoint Functions
 When a Fediverse app interacts with your "server" they need the following:
 - User (Accept: application/activity+json)
--- Inbox 
--- Outbox
--- Followers
--- Following
--- Liked
--- Posts
+  - Inbox 
+  - Outbox
+  - Followers
+  - Following
+  - Liked
+  - Posts
 - Explore
 - Public
--- Local
+  - Local
 
 ### Moderation Functions
-- Admin
--- User
---- Silence *
---- Block *
---- Elevate
---- Mark Sensitive *
---- Freeze
---- Limit
---- Suspend
--- Post
---- Flag *
---- Mark Sensitive *
---- Delete
--- Server
---- Reputation
---- Reject Media
---- Silence All Accounts
---- Defederate
+- User
+  - Silence *
+  - Block *
+  - Elevate
+  - Mark Sensitive *
+  - Freeze
+  - Limit
+  - Suspend
+- Post
+  - Flag *
+  - Mark Sensitive *
+  - Delete
+ - Server
+  - Reputation
+  - Reject Media
+  - Silence All Accounts
+  - Defederate
 
 * Publicly available moderation actions
 
 ### Federating Functions
 When interacting with other servers, you will handle the following:
- - Deliver - initiated internally
- - Receive - Verify server + sender on receipt
- -- fetch server publickey 
- -- fetch remote publickey 
- - Forward - forward messages from inbox (deliver triggerd by reply+undeliverable)
+- Deliver - initiated internally
+- Receive - Verify server + sender on receipt
+  - fetch server publickey 
+  - fetch remote publickey 
+- Forward - forward messages from inbox (deliver triggerd by reply+undeliverable)
 
 ## Serverless Infra
 Currently designed for AWS. GCP and Azure TBA
 - CloudFormation/SAM
--- Serverless application build/deployment
+  - Serverless application build/deployment
 - Route53 
--- DNS Management
+  - DNS Management
 - Lambda 
--- Handle functions internal and external
--- Handle Auth and Key Verification
--- Handle Cache Management
+  - Handle functions internal and external
+  - Handle Auth and Key Verification
+  - Handle Cache Management
 - API Gateway
--- Handle HTTP requests
--- Route to Lambda/S3
--- Handle invalid/unauthorized Requests
+  - Handle HTTP requests
+  - Route to Lambda/S3
+  - Handle invalid/unauthorized Requests
 - DynamoDB
--- Store User Data
--- Store Inbox/Outbox data (with favorites, shares attached)
--- Store Federated Data (cached users, federated public posts)
+  - Store User Data
+  - Store Inbox/Outbox data (with favorites, shares attached)
+  - Store Federated Data (cached users, federated public posts)
 - S3
--- Store and Share Static Content (SPA, icons)
--- Store and Share media content (images, videos, etc.)
+  - Store and Share Static Content (SPA, icons)
+  - Store and Share media content (images, videos, etc.)
 - Cognito
--- Manage User/authentication
+  - Manage User/authentication
 - SQS 
--- Manage Inbox/Outbox queue management 
+  - Manage Inbox/Outbox queue management 
 ### Possible Additions
 - Rekognition for automoderation of media
 - Comprehend for flagging potentially sensitive/inflamatory posts
