@@ -7,56 +7,16 @@ Current design goals
 
 I'm not sure if this is a good idea or not, but I figured I'd start a GitHub Repo for this.
 ## References
-[ActivityStreams Documentation](https://www.w3.org/ns/activitystreams)
-[ActivityPub Documentation](https://www.w3.org/TR/activitypub/)
-[Oauth2 Documentation](https://oauth.net/2/)
-[Verifiable Credential Data Integrity](https://w3c.github.io/vc-data-integrity/) for Linked-Data Signatures
-[Mastodon Source](https://github.com/mastodon/mastodon/tree/main)
+- [ActivityStreams Documentation](https://www.w3.org/ns/activitystreams)
+- [ActivityPub Documentation](https://www.w3.org/TR/activitypub/)
+- [Oauth2 Documentation](https://oauth.net/2/)
+- [Verifiable Credential Data Integrity](https://w3c.github.io/vc-data-integrity/) for Linked-Data Signatures
+- [Mastodon Source](https://github.com/mastodon/mastodon/tree/main)
 
 ## Serverless Functions
 Each action in a serverless environment is handled by a single function. 
 
-### Endpoint Functions
-When a Fediverse app interacts with your "server" they need the following:
-- User (Accept: application/activity+json)
-  - Inbox 
-  - Outbox
-  - Followers
-  - Following
-  - Liked
-  - Posts
-- Explore
-- Public
-  - Local
-
-### Moderation Functions
-- User
-  - Silence *
-  - Block *
-  - Elevate
-  - Mark Sensitive *
-  - Freeze
-  - Limit
-  - Suspend
-- Post
-  - Flag *
-  - Mark Sensitive *
-  - Delete
- - Server
-  - Reputation
-  - Reject Media
-  - Silence All Accounts
-  - Defederate
-
-* Publicly available moderation actions
-
-### Federating Functions
-When interacting with other servers, you will handle the following:
-- Deliver - initiated internally
-- Receive - Verify server + sender on receipt
-  - fetch server publickey 
-  - fetch remote publickey 
-- Forward - forward messages from inbox (deliver triggerd by reply+undeliverable)
+ActivityPub/ActivityStreams support through [Go ActivityPub](https://github.com/go-ap/activitypub)
 
 ## Serverless Infra
 Currently designed for AWS. GCP and Azure TBA
